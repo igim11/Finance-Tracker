@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Accounts
+{% endblock %}
+
+{% block nav %}
+
+    <nav class="nav nav-pills justify-content-center">
+        <a class="nav-link active" aria-current="page" href="/">Accounts</a>
+        <a class="nav-link" href="/log">Log</a>
+        <a class="nav-link" href="/stats">Stats</a>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="add_account">
+        <form action="/add_account" method="post">
+            <h2>Add Account Here:</h2>
+            <input name="accountname" placeholder="Account Name" type="text">
+            <input name="balance" placeholder="Balance" type="number" step="0.01">
+            <button id="add_account_btn">Add Account</button>
+        </form>
+    </div>
+
+    <div>
+        <table id="account_table" class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-start">Account Name</th>
+                    <th class="text-end">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in accounts %}
+                    <tr>
+                        <td class="text-start">{{ row["account_name"] }}</td>
+                        <td class="text-end">{{ row["balance"] }}</td>
+                        <td class="text-end">
+                            <form action="/edit_account_name" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="accountname" type="text" value="{{ row['account_name'] }}"/>
+                                    <input autocomplete="off" name="newname" placeholder="New Name" type="text">
+                                    <button class="edit_account_name_btn" type="submit">Edit Name</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="text-end">
+                            <form action="/edit_account_balance" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="accountname" type="text" value="{{ row['account_name'] }}"/>
+                                    <input autocomplete="off" name="newbalance" placeholder="New Balance" type="number" step="0.01">
+                                    <button class="edit_account_balance_btn" type="submit">Edit Balance</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/delete_account" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="accountname" type="text" value="{{ row['account_name'] }}"/>
+                                    <button class="delete_account_btn" type="submit">Delete Account</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="1">TOTAL</td>
+                    <td class="border-0 w-bold text-end">{{ total }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+{% endblock %}

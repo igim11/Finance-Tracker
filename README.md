@@ -1,1 +1,15 @@
-# Finance-Tracker
+# FINANCE TRACKER
+#### Video Demo:  <https://youtu.be/Q01ycPZ3lTU>
+#### Description: A finance tracker where you can track your net worth and how you spend your money is something I'd use all the time. I've tried finance tracker apps before but they always required me to pay a subscription fee to use all the features. Luckily, I learned how to code and I can make my own and use it for free.
+
+#### The homepage leads you to the accounts page where you can see how much each of your accounts hold. In this page, you can also add your accounts and edit existing accounts. At the bottom of the page, the total displays your net worth. This is the page where you'd list as an account all the places you keep money. By doing this, you'd actually be able to tell how much money you have in total and where most of it lies.
+
+#### Using flask, the accounts page displays the data from SQL database which stores your account data. Each button on the page is programmed to make changes to the SQL database which in turn, changes what is displayed on the page
+
+#### At the top, the nav bar shows 3 different pages. If we navigate to the "Log" page, you should see on the left of the page an area to log your transactions to keep track of where your money is going. The summary of your transactions will show up in the table after logging it. This is where you would go at the end of the day to log any expenses you've made for the day. After logging in your transactions, you can go back to your accounts page and see how the balance of your accounts have been affected.
+
+#### When you go to log your transaction, selecting the transaction type will trigger several other fields to show up. The fields that show up depends on the transaction type selected. I built this using Javascript. Once you log the transaction, it inputs into an SQL database that stores all transaction data which is what is being displayed on the page
+
+#### Moving on to the last page, "Stats", this page uses graphs to track your overall spending and portfolio. The first graph you'll see here is a bar chart that displays which category you most spend on. This can help you identify where to cut down on expenses to meet any financial goals. At the bottom of the page, you will see a pie chart that shows which shows the percentage of each account vs your total holdings. From this chart, you can identify if your money is mostly in cash or investments and you can make decisions depending on how you want to divide your portfolio into different asset classes.
+
+#### The charts were made from a JS library. Using Flask, the data displayed on the charts are all pulled from the SQL table for transactions. Note that we are able to track expense categories because this was one of the fields when logging an expense. The pie chart pulls from the SQL database of accounts to compute for the percentage of the total.

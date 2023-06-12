@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stats
+{% endblock %}
+
+{% block javascript %}
+
+    <script src="https://cdn.plot.ly/plotly-2.18.2.min.js"></script>
+
+{% endblock %}
+
+{% block nav %}
+
+    <nav class="nav nav-pills justify-content-center">
+        <a class="nav-link" href="/">Accounts</a>
+        <a class="nav-link" href="/log">Log</a>
+        <a class="nav-link active" aria-current="page" href="/stats">Stats</a>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+    <h1>Expenses</h1>
+    <div id="bar">
+        <script>
+            var data = [
+            {
+                    x: [
+                        {% for row in expenses %}
+                            {{ row["expense_type"] | tojson }},
+                        {% endfor %}
+                        ],
+                    y: [
+                        {% for row in expenses %}
+                            {{ row["amount"] | tojson }},
+                        {% endfor %}
+                        ],
+                    type: 'bar'
+
+            }
+            ];
+
+            Plotly.newPlot('bar', data);
+        </script>
+    </div>
+    <h1>Portfolio Breakdown</h1>
+    <div id="pie">
+        <script>
+            var data = [{
+            values: [
+                {% for row in accounts %}
+                    {{ row["balance"] | tojson }},
+                {% endfor %}
+                    ],
+            labels:  [
+                {% for row in accounts %}
+                    {{ row["account_name"] | tojson }},
+                {% endfor %}
+                    ],
+            type: 'pie'
+            }];
+
+            var layout = {
+            height: 400,
+            width: 500
+            };
+
+            Plotly.newPlot('pie', data, layout);
+        </script>
+    </div>
+{% endblock %}

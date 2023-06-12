@@ -1,0 +1,62 @@
+.nav-link {
+    color: black;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #3EC3D5;
+    color: white;
+}
+
+body {
+    background-color:#EDEDEF;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#net_worth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    height: 500px;
+}
+
+div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#add_account {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: #232539;
+    color: #F5F5F5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 25px;
+}
+
+#log_transaction {
+    text-align: left;
+    float: left;
+    width: 24%;
+    background-color: #232539;
+    color: #F5F5F5;
+    padding-top: 15px;
+    padding-left: 15px;
+    border-radius: 25px;
+}
+
+#log_table {
+    float: right;
+    width: 75%;
+}
+
+#log_note {
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+    margin-right: 20px;
+}
